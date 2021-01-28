@@ -1,9 +1,9 @@
 ### IBM Cloud details
 
-ibmcloud_api_key            = "<key>"
-ibmcloud_region             = "<region>"
-ibmcloud_zone               = "<zone>"
-service_instance_id         = "<cloud_instance_ID>"
+#ibmcloud_api_key            = "<key>"
+ibmcloud_region             = "us-south"
+ibmcloud_zone               = "us-south"
+service_instance_id         = "1c544998-1b20-45cf-acd8-44ee685d1839"
 
 ### OpenShift Cluster Details
 
@@ -17,21 +17,21 @@ bootstrap                   = {memory      = "32",   processors  = "0.5",  "coun
 master                      = {memory      = "32",   processors  = "0.5",  "count"   = 3}
 worker                      = {memory      = "32",   processors  = "0.5",  "count"   = 2}
 
-### This is a sample config for trying out Cloud Pak for Data 
+### This is a sample config for trying out Cloud Pak for Data
 #bastion                     = {memory      = "16",   processors  = "1",    "count"   = 1}
 #bootstrap                   = {memory      = "32",   processors  = "0.5",  "count"   = 1}
 #master                      = {memory      = "32",   processors  = "0.5",  "count"   = 3}
 #worker                      = {memory      = "64",   processors  = "1.5",  "count"   = 4}
 
-rhel_image_name             = "rhel-8.3"
+rhel_image_name             = "centos-8.3"
 rhcos_image_name            = "rhcos-4.6"
 processor_type              = "shared"
 system_type                 = "s922"
 network_name                = "ocp-net"
 
 rhel_username               = "root"
-public_key_file             = "data/id_rsa.pub"
-private_key_file            = "data/id_rsa"
+public_key_file             = "data/ocm_power_id_rsa.pub"
+private_key_file            = "data/ocm_power_id_rsa"
 rhel_subscription_username  = "<subscription-id>"          #Leave this as-is if using CentOS as bastion image
 rhel_subscription_password  = "<subscription-password>"    #Leave this as-is if using CentOS as bastion image
 rhel_smt                    = 4
@@ -42,8 +42,8 @@ openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc
 openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/stable-4.6/openshift-client-linux.tar.gz"
 pull_secret_file            = "data/pull-secret.txt"
 
-cluster_domain              = "ibm.com"  #Set domain to nip.io or xip.io if you prefer using online wildcard domain and avoid modifying /etc/hosts
-cluster_id_prefix           = "test-ocp"
+cluster_domain              = "ibm-power.com"  #Set domain to nip.io or xip.io if you prefer using online wildcard domain and avoid modifying /etc/hosts
+cluster_id_prefix           = "ocp-dal12"
 cluster_id                  = ""
 
 
@@ -69,7 +69,7 @@ cluster_id                  = ""
 #chrony_config              = true
 #chrony_config_servers      = [ {server = "0.centos.pool.ntp.org", options = "iburst"}, {server = "1.centos.pool.ntp.org", options = "iburst"} ]
 
-#setup_squid_proxy          = true
+setup_squid_proxy          = true
 
 ## N/A when `setup_squid_proxy = true`, set `setup_squid_proxy = false` when using external proxy.
 #proxy                      = {server = "hostname_or_ip", port = "3128", user = "pxuser", password = "pxpassword"}
@@ -87,5 +87,5 @@ cluster_id                  = ""
 #upgrade_pause_time         = "70"
 #upgrade_delay_time         = "600"
 
-#ibm_cloud_dl_endpoint_net_cidr = ""  #Set this to IBM Cloud DirectLink endpoint network cidr eg. 10.0.0.0/8
+ibm_cloud_dl_endpoint_net_cidr = "169.254.0.2/30"  #Set this to IBM Cloud DirectLink endpoint network cidr eg. 10.0.0.0/8
 #ibm_cloud_http_proxy = ""            #Set this to IBM Cloud http/squid proxy eg. http://10.166.13.64:3128
